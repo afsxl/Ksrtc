@@ -127,7 +127,8 @@ class _ApplicationsState extends State<Applications> {
                               shrinkWrap: true,
                               itemCount: applications.length,
                               itemBuilder: (context, index) {
-                                Uint8List photo = base64Decode(applications[index]['photo']);
+                                Uint8List photo =
+                                    base64Decode(applications[index]['photo']);
                                 return Container(
                                   decoration: BoxDecoration(
                                     color: Colors.black26,
@@ -145,7 +146,8 @@ class _ApplicationsState extends State<Applications> {
                                         MaterialPageRoute(
                                           builder: (ctx) {
                                             return Application(
-                                              aadhar: applications[index]['aadhar'],
+                                              aadhar: applications[index]
+                                                  ['aadhar'],
                                               photo: photo,
                                               name: applications[index]['name'],
                                             );
@@ -185,23 +187,25 @@ class _ApplicationsState extends State<Applications> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

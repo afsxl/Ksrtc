@@ -466,44 +466,48 @@ class _ProfileState extends State<Profile> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   void showSuccess(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.black,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.black,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            msg,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

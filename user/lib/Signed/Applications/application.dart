@@ -28,6 +28,8 @@ class _ApplicationState extends State<Application> {
   TextEditingController tRate = TextEditingController();
   TextEditingController tCourse = TextEditingController();
   TextEditingController tInstitution = TextEditingController();
+  TextEditingController tHomeDistrict = TextEditingController();
+  TextEditingController tDepot = TextEditingController();
   Map application = {};
   bool loading = false;
   int downloadVisible = 0;
@@ -70,11 +72,14 @@ class _ApplicationState extends State<Application> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text =
+          "${application['institution']},\n${application['place']},${application['district']}";
       downloadVisible = application['ksrtcApproval'];
       if (downloadVisible == 1) {
         cost = application['cost'];
       }
+      tHomeDistrict.text = application['homeDistrict'];
+      tDepot.text = application['depot'];
     } catch (e) {
       showError("Can't Connect To Network !");
       if (mounted) {
@@ -155,7 +160,7 @@ class _ApplicationState extends State<Application> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              showImage(base64Decode(application['id']));
+                              showImage(base64Decode(application['idCard']));
                             },
                             child: Container(
                               height: 150,
@@ -170,7 +175,7 @@ class _ApplicationState extends State<Application> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['id']),
+                                base64Decode(application['idCard']),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -309,7 +314,8 @@ class _ApplicationState extends State<Application> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(base64Decode(application['aadharFront']));
+                                showImage(
+                                    base64Decode(application['aadharFront']));
                               },
                               child: Container(
                                 height: 50,
@@ -323,7 +329,8 @@ class _ApplicationState extends State<Application> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -347,7 +354,8 @@ class _ApplicationState extends State<Application> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(base64Decode(application['aadharBack']));
+                                showImage(
+                                    base64Decode(application['aadharBack']));
                               },
                               child: Container(
                                 height: 50,
@@ -361,7 +369,8 @@ class _ApplicationState extends State<Application> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -604,6 +613,94 @@ class _ApplicationState extends State<Application> {
                       Row(
                         children: [
                           Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Home District',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: tHomeDistrict,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Depot',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: tDepot,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
                             child: Container(
                               decoration: BoxDecoration(
                                 color: application['hodApproval'] == 0
@@ -669,7 +766,8 @@ class _ApplicationState extends State<Application> {
                                   Text(
                                     application['institutionApproval'] == 0
                                         ? "Not Viewed"
-                                        : application['institutionApproval'] == 1
+                                        : application['institutionApproval'] ==
+                                                1
                                             ? "Approved"
                                             : "Rejected",
                                     style: const TextStyle(
@@ -1048,44 +1146,48 @@ class _ApplicationState extends State<Application> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   void showSuccess(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.black,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.black,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            msg,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

@@ -1,14 +1,14 @@
 from django.db import models
+from user.models import User
 
 # Create your models here.
 
 
 class Concession(models.Model):
-    primaryKey = models.IntegerField(primary_key=True)
     username = models.CharField(max_length=255, null=True)
     name = models.CharField(max_length=255, null=True)
     photo = models.ImageField(upload_to="images/photo", null=True)
-    id = models.ImageField(upload_to="images/id", null=True)
+    idCard = models.ImageField(upload_to="images/id", null=True)
     aadhar = models.CharField(max_length=12, null=True)
     aadharFront = models.ImageField(upload_to="images/aadharFront", null=True)
     aadharBack = models.ImageField(upload_to="images/aadharBack", null=True)

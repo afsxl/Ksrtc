@@ -434,7 +434,6 @@ def userGetDepots(request):
         flat=True,
     )
     depots = list(depots)
-    print(depots)
     return Response(
         {
             "depots": depots,
@@ -514,12 +513,14 @@ def userApplyConcession(request):
     startPoint = data["startPoint"]
     endPoint = data["endPoint"]
     rate = data["rate"]
+    homeDistrict = data["homeDistrict"]
+    depot = data["depot"]
     district = data["district"]
     place = data["place"]
     institution = data["institution"]
     course = data["course"]
     photo = data["photo"]
-    id = data["id"]
+    idCard = data["id"]
     aadharFront = data["aadharFront"]
     aadharBack = data["aadharBack"]
     if ConcessionForm.objects.filter(
@@ -547,12 +548,14 @@ def userApplyConcession(request):
         startPoint=startPoint.upper(),
         endPoint=endPoint.upper(),
         rate=rate,
+        homeDistrict=homeDistrict,
+        depot=depot,
         district=district,
         place=place,
         institution=institution,
         course=course,
         photo=photo,
-        id=id,
+        idCard=idCard,
         aadharFront=aadharFront,
         aadharBack=aadharBack,
     )
@@ -594,17 +597,19 @@ def userGetApplication(request):
     row = ConcessionForm.objects.get(
         aadhar=aadhar,
     )
-    id = base64.b64encode(row.id.read()).decode("utf-8")
+    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
     aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
     aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
     application = {
-        "id": id,
+        "idCard": idCard,
         "age": row.age,
         "aadharFront": aadharFront,
         "aadharBack": aadharBack,
         "startPoint": row.startPoint,
         "endPoint": row.endPoint,
         "rate": row.rate,
+        "homeDistrict": row.homeDistrict,
+        "depot": row.depot,
         "district": row.district,
         "place": row.place,
         "institution": row.institution,

@@ -33,7 +33,6 @@ class _SplashState extends State<Splash> {
       (response) {
         if (response.statusCode == 200) {
           api = response.body;
-          api = api.substring(0, api.length - 1);
         } else {
           showError("Can't Connect To NetWork !");
         }
@@ -100,24 +99,26 @@ class _SplashState extends State<Splash> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        backgroundColor: Colors.red.shade900,
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          backgroundColor: Colors.red.shade900,
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   @override

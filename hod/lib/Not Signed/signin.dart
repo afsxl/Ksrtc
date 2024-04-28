@@ -547,23 +547,25 @@ class _SignInState extends State<SignIn> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        backgroundColor: Colors.red.shade900,
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          backgroundColor: Colors.red.shade900,
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

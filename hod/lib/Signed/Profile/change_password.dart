@@ -95,7 +95,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                               }
                             },
                             child: Icon(
-                              hidePassword ? Icons.visibility : Icons.visibility_off,
+                              hidePassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                               color: Colors.black,
                             ),
                           ),
@@ -133,7 +135,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                               }
                             },
                             child: Icon(
-                              hideNewPassword ? Icons.visibility : Icons.visibility_off,
+                              hideNewPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                               color: Colors.black,
                             ),
                           ),
@@ -165,13 +169,16 @@ class _ChangePasswordState extends State<ChangePassword> {
                               if (mounted) {
                                 setState(
                                   () {
-                                    hideConfirmNewPassword = !hideConfirmNewPassword;
+                                    hideConfirmNewPassword =
+                                        !hideConfirmNewPassword;
                                   },
                                 );
                               }
                             },
                             child: Icon(
-                              hideConfirmNewPassword ? Icons.visibility : Icons.visibility_off,
+                              hideConfirmNewPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                               color: Colors.black,
                             ),
                           ),
@@ -293,23 +300,25 @@ class _ChangePasswordState extends State<ChangePassword> {
   }
 
   void showSuccess(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.black,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.black,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            msg,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

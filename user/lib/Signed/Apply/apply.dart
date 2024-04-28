@@ -199,7 +199,8 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -249,7 +250,8 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -363,7 +365,8 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -413,7 +416,8 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -1045,6 +1049,10 @@ class _ApplyConcessionState extends State<ApplyConcession> {
       showError("Enter Valid Ticket Rate !");
     } else if (int.parse(tRate.text) < 9) {
       showError("Enter Correct Ticket Rate !");
+    } else if (homeDistrict == districts[0]) {
+      showError("Select District Of Home");
+    } else if (depot == depots[0]) {
+      showError("Select Your Depot");
     } else if (district == districts[0]) {
       showError("Select District Of Institution !");
     } else if (place == places[0]) {
@@ -1070,6 +1078,8 @@ class _ApplyConcessionState extends State<ApplyConcession> {
         request.fields['startPoint'] = tStartPoint.text;
         request.fields['endPoint'] = tEndPoint.text;
         request.fields['rate'] = tRate.text;
+        request.fields['homeDistrict'] = homeDistrict;
+        request.fields['depot'] = depot;
         request.fields['district'] = district;
         request.fields['place'] = place;
         request.fields['institution'] = institution;
@@ -1129,44 +1139,48 @@ class _ApplyConcessionState extends State<ApplyConcession> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   void showSuccess(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.black,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.black,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            msg,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

@@ -70,7 +70,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text =
+          "${application['institution']},\n${application['place']},${application['district']}";
     } catch (e) {
       showError("Can't Connect To Network !");
       if (mounted) {
@@ -305,7 +306,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(base64Decode(application['aadharFront']));
+                                showImage(
+                                    base64Decode(application['aadharFront']));
                               },
                               child: Container(
                                 height: 50,
@@ -319,7 +321,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -343,7 +346,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(base64Decode(application['aadharBack']));
+                                showImage(
+                                    base64Decode(application['aadharBack']));
                               },
                               child: Container(
                                 height: 50,
@@ -357,7 +361,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -676,44 +681,48 @@ class _CompletedApplicationState extends State<CompletedApplication> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   void showSuccess(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.black,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.black,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            msg,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

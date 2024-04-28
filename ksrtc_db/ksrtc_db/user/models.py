@@ -5,13 +5,13 @@ from django.db import models
 
 class User(models.Model):
     name = models.CharField(max_length=255, null=True)
-    username = models.CharField(max_length=255, primary_key=True)
+    username = models.CharField(max_length=255, null=True)
     password = models.CharField(max_length=255, null=True)
     email = models.CharField(max_length=255, unique=True, null=True)
 
 
 class Otp(models.Model):
-    username = models.CharField(max_length=255, primary_key=True)
+    username = models.CharField(max_length=255, null=True)
     otp = models.CharField(max_length=255, null=True)
 
 
@@ -19,8 +19,8 @@ class ConcessionForm(models.Model):
     username = models.CharField(max_length=255, null=True)
     name = models.CharField(max_length=255, null=True)
     photo = models.ImageField(upload_to="images/photo", null=True)
-    id = models.ImageField(upload_to="images/id", null=True)
-    aadhar = models.CharField(max_length=12, primary_key=True)
+    idCard = models.ImageField(upload_to="images/id", null=True)
+    aadhar = models.CharField(max_length=12, null=True)
     aadharFront = models.ImageField(upload_to="images/aadharFront", null=True)
     aadharBack = models.ImageField(upload_to="images/aadharBack", null=True)
     age = models.CharField(max_length=2, null=True)

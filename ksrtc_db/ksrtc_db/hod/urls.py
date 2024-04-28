@@ -8,7 +8,7 @@ urlpatterns = [
     path("hodGetCourses", views.hodGetCourses),
     path("hodSignin", views.hodSignin),
     path("hodGetProfile", views.hodGetProfile),
-    path("hodChangepassword", views.hodChangePassword),
+    path("hodChangePassword", views.hodChangePassword),
     path("hodGetApplications", views.hodGetApplications),
     path("hodGetApplication", views.hodGetApplication),
     path("hodRejectApplication", views.hodRejectApplication),

@@ -185,17 +185,19 @@ def institutionGetApplication(request):
     row = ConcessionForm.objects.get(
         aadhar=aadhar,
     )
-    id = base64.b64encode(row.id.read()).decode("utf-8")
+    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
     aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
     aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
     application = {
-        "id": id,
+        "idCard": idCard,
         "age": row.age,
         "aadharFront": aadharFront,
         "aadharBack": aadharBack,
         "startPoint": row.startPoint,
         "endPoint": row.endPoint,
         "rate": row.rate,
+        "homeDistrict": row.homeDistrict,
+        "depot": row.depot,
         "district": row.district,
         "place": row.place,
         "institution": row.institution,

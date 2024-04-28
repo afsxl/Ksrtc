@@ -7,7 +7,9 @@ import 'package:user/main.dart';
 import 'package:http/http.dart' as http;
 
 class Applications extends StatefulWidget {
-  const Applications({super.key});
+  const Applications({
+    super.key,
+  });
 
   @override
   State<Applications> createState() => _ApplicationsState();
@@ -127,8 +129,9 @@ class _ApplicationsState extends State<Applications> {
                               shrinkWrap: true,
                               itemCount: applications.length,
                               itemBuilder: (context, index) {
-                                Uint8List photo =
-                                    base64Decode(applications[index]['photo']);
+                                Uint8List photo = base64Decode(
+                                  applications[index]['photo'],
+                                );
                                 return Container(
                                   decoration: BoxDecoration(
                                     color: Colors.black26,
@@ -146,8 +149,7 @@ class _ApplicationsState extends State<Applications> {
                                         MaterialPageRoute(
                                           builder: (ctx) {
                                             return Application(
-                                              aadhar: applications[index]
-                                                  ['aadhar'],
+                                              aadhar: applications[index]['aadhar'],
                                               photo: photo,
                                               name: applications[index]['name'],
                                             );

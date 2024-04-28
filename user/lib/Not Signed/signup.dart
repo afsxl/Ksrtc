@@ -7,7 +7,9 @@ import 'package:user/Signed/home.dart';
 import 'package:user/main.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  const SignUp({
+    super.key,
+  });
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -178,9 +180,7 @@ class _SignUpState extends State<SignUp> {
                               }
                             },
                             child: Icon(
-                              hidePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hidePassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),
@@ -218,9 +218,7 @@ class _SignUpState extends State<SignUp> {
                               }
                             },
                             child: Icon(
-                              hideConfirmPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hideConfirmPassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),

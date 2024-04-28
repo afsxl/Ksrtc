@@ -7,7 +7,9 @@ import 'package:user/Signed/home.dart';
 import 'package:user/main.dart';
 
 class Splash extends StatefulWidget {
-  const Splash({super.key});
+  const Splash({
+    super.key,
+  });
 
   @override
   State<Splash> createState() => _SplashState();

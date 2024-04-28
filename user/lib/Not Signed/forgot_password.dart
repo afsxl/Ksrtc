@@ -4,7 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:user/main.dart';
 
 class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+  const ForgetPassword({
+    super.key,
+  });
 
   @override
   State<ForgetPassword> createState() => _ForgetPasswordState();
@@ -241,9 +243,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     }
                                   },
                                   child: Icon(
-                                    hidePassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
+                                    hidePassword ? Icons.visibility : Icons.visibility_off,
                                   ),
                                 ),
                               ),
@@ -274,16 +274,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     if (mounted) {
                                       setState(
                                         () {
-                                          hideConfirmPassword =
-                                              !hideConfirmPassword;
+                                          hideConfirmPassword = !hideConfirmPassword;
                                         },
                                       );
                                     }
                                   },
                                   child: Icon(
-                                    hideConfirmPassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
+                                    hideConfirmPassword ? Icons.visibility : Icons.visibility_off,
                                   ),
                                 ),
                               ),

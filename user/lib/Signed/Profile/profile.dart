@@ -7,7 +7,9 @@ import 'package:user/Signed/Profile/change_password.dart';
 import 'package:user/main.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  const Profile({
+    super.key,
+  });
 
   @override
   State<Profile> createState() => _ProfileState();

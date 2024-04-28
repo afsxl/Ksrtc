@@ -72,8 +72,7 @@ class _ApplicationState extends State<Application> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text =
-          "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
       downloadVisible = application['ksrtcApproval'];
       if (downloadVisible == 1) {
         cost = application['cost'];
@@ -160,7 +159,11 @@ class _ApplicationState extends State<Application> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              showImage(base64Decode(application['idCard']));
+                              showImage(
+                                base64Decode(
+                                  application['idCard'],
+                                ),
+                              );
                             },
                             child: Container(
                               height: 150,
@@ -175,7 +178,9 @@ class _ApplicationState extends State<Application> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['idCard']),
+                                base64Decode(
+                                  application['idCard'],
+                                ),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -315,7 +320,10 @@ class _ApplicationState extends State<Application> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharFront']));
+                                  base64Decode(
+                                    application['aadharFront'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -329,8 +337,7 @@ class _ApplicationState extends State<Application> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -355,7 +362,10 @@ class _ApplicationState extends State<Application> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharBack']));
+                                  base64Decode(
+                                    application['aadharBack'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -369,8 +379,7 @@ class _ApplicationState extends State<Application> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -766,8 +775,7 @@ class _ApplicationState extends State<Application> {
                                   Text(
                                     application['institutionApproval'] == 0
                                         ? "Not Viewed"
-                                        : application['institutionApproval'] ==
-                                                1
+                                        : application['institutionApproval'] == 1
                                             ? "Approved"
                                             : "Rejected",
                                     style: const TextStyle(

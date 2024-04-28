@@ -7,7 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:user/main.dart';
 
 class ApplyConcession extends StatefulWidget {
-  const ApplyConcession({super.key});
+  const ApplyConcession({
+    super.key,
+  });
 
   @override
   State<ApplyConcession> createState() => _ApplyConcessionState();
@@ -199,8 +201,7 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -250,8 +251,7 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -365,8 +365,7 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -416,8 +415,7 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(

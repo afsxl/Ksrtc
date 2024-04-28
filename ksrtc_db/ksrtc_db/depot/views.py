@@ -133,7 +133,11 @@ def depotGetApplications(request):
     ).all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -155,9 +159,21 @@ def depotGetApplication(request):
     row = ConcessionForm.objects.get(
         aadhar=aadhar,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,
@@ -301,7 +317,9 @@ def depotApproveApplication(request):
     )
     drawBack.text(
         position,
-        str(datetime.now().date()),
+        str(
+            datetime.now().date(),
+        ),
         fill=textColor,
         font=font,
     )
@@ -342,7 +360,9 @@ def depotApproveApplication(request):
     )
     form.front.save(
         f"{aadhar}.jpg",
-        ContentFile(frontIO.getvalue()),
+        ContentFile(
+            frontIO.getvalue(),
+        ),
         save=False,
     )
     backIO = io.BytesIO()
@@ -352,7 +372,9 @@ def depotApproveApplication(request):
     )
     form.back.save(
         f"{aadhar}.jpg",
-        ContentFile(backIO.getvalue()),
+        ContentFile(
+            backIO.getvalue(),
+        ),
         save=False,
     )
     form.save()
@@ -382,7 +404,11 @@ def depotGetCompletedApplications(request):
     ).all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -405,9 +431,21 @@ def depotGetCompletedApplication(request):
     row = Concession.objects.get(
         id=id,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,

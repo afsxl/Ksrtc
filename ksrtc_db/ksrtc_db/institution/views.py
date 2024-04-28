@@ -99,9 +99,15 @@ def institutionSignin(request):
 def institutionGetProfile(request):
     data = request.data
     id = data["id"]
-    institution = Institutions.objects.get(id=id).institution
-    district = Institutions.objects.get(id=id).district
-    place = Institutions.objects.get(id=id).place
+    institution = Institutions.objects.get(
+        id=id,
+    ).institution
+    district = Institutions.objects.get(
+        id=id,
+    ).district
+    place = Institutions.objects.get(
+        id=id,
+    ).place
     profile = {
         "institution": institution,
         "district": district,
@@ -163,7 +169,11 @@ def institutionGetApplications(request):
     ).all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -185,9 +195,21 @@ def institutionGetApplication(request):
     row = ConcessionForm.objects.get(
         aadhar=aadhar,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,

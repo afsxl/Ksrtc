@@ -98,7 +98,11 @@ def ksrtcGetCompletedApplications(request):
     applicationRows = Concession.objects.filter().all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -121,9 +125,21 @@ def ksrtcGetCompletedApplication(request):
     row = Concession.objects.get(
         id=id,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,

@@ -3,7 +3,6 @@ import os
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.mail import send_mail, EmailMessage
-from django.conf import settings
 import random
 from .models import *
 from institution.models import *
@@ -576,7 +575,11 @@ def userGetApplications(request):
     ).all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -598,9 +601,21 @@ def userGetApplication(request):
     row = ConcessionForm.objects.get(
         aadhar=aadhar,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,
@@ -689,9 +704,17 @@ def userPay(request):
         receiver,
     )
     with open(form.front.path, "rb") as front:
-        mail.attach("front.jpg", front.read(), "image/jpg")
+        mail.attach(
+            "front.jpg",
+            front.read(),
+            "image/jpg",
+        )
     with open(form.back.path, "rb") as back:
-        mail.attach("back.jpg", back.read(), "image/jpg")
+        mail.attach(
+            "back.jpg",
+            back.read(),
+            "image/jpg",
+        )
     ConcessionForm.objects.filter(
         aadhar=aadhar,
     ).delete()
@@ -708,7 +731,11 @@ def userGetCompletedApplications(request):
     ).all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -731,9 +758,21 @@ def userGetCompletedApplication(request):
     row = Concession.objects.get(
         id=id,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,

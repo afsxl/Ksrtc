@@ -77,7 +77,9 @@ def hodGetCourses(request):
         place=place,
         institution=institution,
     ).id
-    courses = Courses.objects.filter(institutionId=id).values_list(
+    courses = Courses.objects.filter(
+        institutionId=id,
+    ).values_list(
         "course",
         flat=True,
     )
@@ -209,7 +211,11 @@ def hodGetApplications(request):
     ).all()
     applications = []
     for i in applicationRows:
-        photo = base64.b64encode(i.photo.read()).decode("utf-8")
+        photo = base64.b64encode(
+            i.photo.read(),
+        ).decode(
+            "utf-8",
+        )
         applications.append(
             {
                 "name": i.name,
@@ -231,9 +237,21 @@ def hodGetApplication(request):
     row = ConcessionForm.objects.get(
         aadhar=aadhar,
     )
-    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
-    aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
-    aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
+    idCard = base64.b64encode(
+        row.idCard.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharFront = base64.b64encode(
+        row.aadharFront.read(),
+    ).decode(
+        "utf-8",
+    )
+    aadharBack = base64.b64encode(
+        row.aadharBack.read(),
+    ).decode(
+        "utf-8",
+    )
     application = {
         "idCard": idCard,
         "age": row.age,

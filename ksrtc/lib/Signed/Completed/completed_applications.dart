@@ -7,7 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class CompletedApplications extends StatefulWidget {
-  const CompletedApplications({super.key});
+  const CompletedApplications({
+    super.key,
+  });
 
   @override
   State<CompletedApplications> createState() => _CompletedApplicationsState();
@@ -127,8 +129,9 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
                               shrinkWrap: true,
                               itemCount: applications.length,
                               itemBuilder: (context, index) {
-                                Uint8List photo =
-                                    base64Decode(applications[index]['photo']);
+                                Uint8List photo = base64Decode(
+                                  applications[index]['photo'],
+                                );
                                 return Container(
                                   decoration: BoxDecoration(
                                     color: Colors.black26,
@@ -146,8 +149,7 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
                                         MaterialPageRoute(
                                           builder: (ctx) {
                                             return CompletedApplication(
-                                              aadhar: applications[index]
-                                                  ['aadhar'],
+                                              aadhar: applications[index]['aadhar'],
                                               photo: photo,
                                               name: applications[index]['name'],
                                               id: applications[index]['id'],
@@ -188,23 +190,25 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

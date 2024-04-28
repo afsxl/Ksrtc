@@ -4,7 +4,9 @@ import 'package:ksrtc/Signed/home.dart';
 import 'package:ksrtc/main.dart';
 
 class Splash extends StatefulWidget {
-  const Splash({super.key});
+  const Splash({
+    super.key,
+  });
 
   @override
   State<Splash> createState() => _SplashState();

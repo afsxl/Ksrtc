@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:ksrtc/main.dart';
 
 class AddInstitution extends StatefulWidget {
-  const AddInstitution({super.key});
+  const AddInstitution({
+    super.key,
+  });
 
   @override
   State<AddInstitution> createState() => _AddInstitutionState();

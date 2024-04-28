@@ -6,7 +6,9 @@ import 'package:ksrtc/Signed/Depots/depots.dart';
 import 'package:ksrtc/Signed/Institutions/institutions.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

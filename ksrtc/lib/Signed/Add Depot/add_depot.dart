@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:ksrtc/main.dart';
 
 class AddDepot extends StatefulWidget {
-  const AddDepot({super.key});
+  const AddDepot({
+    super.key,
+  });
 
   @override
   State<AddDepot> createState() => _AddDepotState();
@@ -185,9 +187,7 @@ class _AddDepotState extends State<AddDepot> {
                               }
                             },
                             child: Icon(
-                              hidePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hidePassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),
@@ -224,9 +224,7 @@ class _AddDepotState extends State<AddDepot> {
                               }
                             },
                             child: Icon(
-                              hideConfirmPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hideConfirmPassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),

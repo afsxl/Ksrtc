@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:ksrtc/Signed/Institutions/institution.dart';
 import 'package:ksrtc/main.dart';
 
 class Depots extends StatefulWidget {
-  const Depots({super.key});
+  const Depots({
+    super.key,
+  });
 
   @override
   State<Depots> createState() => _DepotsState();
@@ -147,8 +148,7 @@ class _DepotsState extends State<Depots> {
                                       ],
                                     ),
                                     subtitle: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
@@ -177,8 +177,7 @@ class _DepotsState extends State<Depots> {
                                         delete(index);
                                       },
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Icon(
                                             Icons.delete,

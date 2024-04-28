@@ -5,7 +5,9 @@ import 'package:ksrtc/Signed/Institutions/institution.dart';
 import 'package:ksrtc/main.dart';
 
 class Institutions extends StatefulWidget {
-  const Institutions({super.key});
+  const Institutions({
+    super.key,
+  });
 
   @override
   State<Institutions> createState() => _InstitutionsState();
@@ -139,12 +141,9 @@ class _InstitutionsState extends State<Institutions> {
                                           builder: (ctx) {
                                             return Institution(
                                               id: institutions[index]['id'],
-                                              institution: institutions[index]
-                                                  ['institution'],
-                                              district: institutions[index]
-                                                  ['district'],
-                                              place: institutions[index]
-                                                  ['place'],
+                                              institution: institutions[index]['institution'],
+                                              district: institutions[index]['district'],
+                                              place: institutions[index]['place'],
                                             );
                                           },
                                         ),
@@ -178,23 +177,25 @@ class _InstitutionsState extends State<Institutions> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        backgroundColor: Colors.red.shade900,
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          backgroundColor: Colors.red.shade900,
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

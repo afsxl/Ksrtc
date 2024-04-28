@@ -73,8 +73,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text =
-          "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
       tCost.text = application['cost'];
       tDepot.text = application['depot'];
       tHomeDistrict.text = application['homeDistrict'];
@@ -158,7 +157,11 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              showImage(base64Decode(application['id']));
+                              showImage(
+                                base64Decode(
+                                  application['id'],
+                                ),
+                              );
                             },
                             child: Container(
                               height: 150,
@@ -173,7 +176,9 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['idCard']),
+                                base64Decode(
+                                  application['idCard'],
+                                ),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -313,7 +318,10 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharFront']));
+                                  base64Decode(
+                                    application['aadharFront'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -327,8 +335,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -353,7 +360,10 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharBack']));
+                                  base64Decode(
+                                    application['aadharBack'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -367,8 +377,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -768,44 +777,48 @@ class _CompletedApplicationState extends State<CompletedApplication> {
   }
 
   void showError(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.red.shade900,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          error,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.red.shade900,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            error,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   void showSuccess(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(
-          seconds: 1,
-        ),
-        backgroundColor: Colors.black,
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(
-          20,
-        ),
-        content: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(
+            seconds: 1,
+          ),
+          backgroundColor: Colors.black,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(
+            20,
+          ),
+          content: Text(
+            msg,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

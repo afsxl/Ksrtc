@@ -3,7 +3,9 @@ import 'package:institution/Splash/splash.dart';
 
 String api = "";
 void main() {
-  runApp(const Institution());
+  runApp(
+    const Institution(),
+  );
 }
 
 class Institution extends StatelessWidget {

@@ -3,7 +3,9 @@ import 'package:user/Splash/splash.dart';
 
 String api = "";
 void main() {
-  runApp(const User());
+  runApp(
+    const User(),
+  );
 }
 
 class User extends StatelessWidget {

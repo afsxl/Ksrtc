@@ -8,13 +8,13 @@ class CompletedApplication extends StatefulWidget {
   final String aadhar;
   final Uint8List photo;
   final String name;
-  final int primaryKey;
+  final int id;
   const CompletedApplication({
     super.key,
     required this.aadhar,
     required this.photo,
     required this.name,
-    required this.primaryKey,
+    required this.id,
   });
 
   @override
@@ -57,7 +57,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
         },
         body: jsonEncode(
           {
-            'primaryKey': widget.primaryKey,
+            'id': widget.id,
           },
         ),
       );
@@ -167,7 +167,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['id']),
+                                base64Decode(application['idCard']),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -648,7 +648,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
         },
         body: jsonEncode(
           {
-            'primaryKey': widget.primaryKey,
+            'id': widget.id,
           },
         ),
       );

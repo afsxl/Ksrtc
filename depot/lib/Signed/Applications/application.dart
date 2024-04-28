@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:ksrtc/main.dart';
+import 'package:depot/main.dart';
 
 class Application extends StatefulWidget {
   final String aadhar;
@@ -29,6 +29,8 @@ class _ApplicationState extends State<Application> {
   TextEditingController tCourse = TextEditingController();
   TextEditingController tInstitution = TextEditingController();
   TextEditingController tCost = TextEditingController();
+  TextEditingController tDepot = TextEditingController();
+  TextEditingController tHomeDistrict = TextEditingController();
   DateTime date = DateTime(
     DateTime.now().year,
     DateTime.now().month,
@@ -54,7 +56,7 @@ class _ApplicationState extends State<Application> {
     try {
       final response = await http.post(
         Uri.parse(
-          '${api}ksrtcGetApplication',
+          '${api}depotGetApplication',
         ),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -76,6 +78,8 @@ class _ApplicationState extends State<Application> {
       tCourse.text = application['course'];
       tInstitution.text =
           "${application['institution']},\n${application['place']},${application['district']}";
+      tDepot.text = application['depot'];
+      tHomeDistrict.text = application['homeDistrict'];
     } catch (e) {
       showError("Can't Connect To Network !");
       if (mounted) {
@@ -171,7 +175,7 @@ class _ApplicationState extends State<Application> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['id']),
+                                base64Decode(application['idCard']),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -311,7 +315,10 @@ class _ApplicationState extends State<Application> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharFront']));
+                                  base64Decode(
+                                    application['aadharFront'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -606,52 +613,140 @@ class _ApplicationState extends State<Application> {
                       const SizedBox(
                         height: 15,
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Home District',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: tHomeDistrict,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Depot',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: tDepot,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ),
       ),
-      bottomNavigationBar: Row(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.red.shade900,
-                borderRadius: BorderRadius.circular(
-                  5,
+      bottomNavigationBar: Visibility(
+        visible: !loading,
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.red.shade900,
+                  borderRadius: BorderRadius.circular(
+                    5,
+                  ),
                 ),
-              ),
-              child: TextButton(
-                onPressed: reject,
-                child: const Text(
-                  'Reject',
-                  style: TextStyle(
-                    color: Colors.white,
+                child: TextButton(
+                  onPressed: reject,
+                  child: const Text(
+                    'Reject',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.green.shade900,
-                borderRadius: BorderRadius.circular(
-                  5,
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.green.shade900,
+                  borderRadius: BorderRadius.circular(
+                    5,
+                  ),
                 ),
-              ),
-              child: TextButton(
-                onPressed: approve,
-                child: const Text(
-                  'Approve',
-                  style: TextStyle(
-                    color: Colors.white,
+                child: TextButton(
+                  onPressed: approve,
+                  child: const Text(
+                    'Approve',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -778,7 +873,7 @@ class _ApplicationState extends State<Application> {
     try {
       await http.post(
         Uri.parse(
-          '${api}ksrtcRejectApplication',
+          '${api}depotRejectApplication',
         ),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -984,7 +1079,7 @@ class _ApplicationState extends State<Application> {
       try {
         await http.post(
           Uri.parse(
-            '${api}ksrtcApproveApplication',
+            '${api}depotApproveApplication',
           ),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',

@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:depot/Signed/Completed/completed_application.dart';
+import 'package:depot/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:user/Signed/Completed/completed_application.dart';
-import 'package:user/main.dart';
 import 'package:http/http.dart' as http;
 
 class CompletedApplications extends StatefulWidget {
@@ -33,17 +33,17 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
     }
     try {
       SharedPreferences pref = await SharedPreferences.getInstance();
-      String? username = pref.getString('username');
+      String? id = pref.getString('id');
       final response = await http.post(
         Uri.parse(
-          '${api}userGetCompletedApplications',
+          '${api}depotGetCompletedApplications',
         ),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(
           {
-            'username': username,
+            'id': id,
           },
         ),
       );
@@ -188,25 +188,23 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
   }
 
   void showError(String error) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(
-            seconds: 1,
-          ),
-          backgroundColor: Colors.red.shade900,
-          margin: const EdgeInsets.all(
-            20,
-          ),
-          behavior: SnackBarBehavior.floating,
-          content: Text(
-            error,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(
+          seconds: 1,
+        ),
+        backgroundColor: Colors.red.shade900,
+        margin: const EdgeInsets.all(
+          20,
+        ),
+        behavior: SnackBarBehavior.floating,
+        content: Text(
+          error,
+          style: const TextStyle(
+            color: Colors.white,
           ),
         ),
-      );
-    }
+      ),
+    );
   }
 }

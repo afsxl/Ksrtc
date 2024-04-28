@@ -8,6 +8,7 @@ import random
 from .models import *
 from institution.models import *
 from ksrtc.models import *
+from depot.models import *
 import datetime
 
 # Create your views here.
@@ -653,7 +654,7 @@ def userPay(request):
     Concession.objects.create(
         username=form.username,
         photo=form.photo,
-        id=form.id,
+        idCard=form.idCard,
         name=form.name,
         aadhar=aadhar,
         age=form.age,
@@ -663,6 +664,8 @@ def userPay(request):
         endPoint=form.endPoint,
         rate=form.rate,
         course=form.course,
+        homeDistrict=form.homeDistrict,
+        depot=form.depot,
         district=form.district,
         place=form.place,
         institution=form.institution,
@@ -672,7 +675,9 @@ def userPay(request):
         cost=form.cost,
     )
     username = form.username
-    email = User.objects.get(username=username).email
+    email = User.objects.get(
+        username=username,
+    ).email
     subject = "Ksrtc Concession"
     message = "Your Concession"
     sender = "ksrtc.concession@gmail.com"
@@ -709,7 +714,7 @@ def userGetCompletedApplications(request):
                 "name": i.name,
                 "aadhar": i.aadhar,
                 "photo": photo,
-                "primaryKey": i.primaryKey,
+                "id": i.id,
             }
         )
     return Response(
@@ -722,15 +727,15 @@ def userGetCompletedApplications(request):
 @api_view(["POST"])
 def userGetCompletedApplication(request):
     data = request.data
-    primaryKey = data["primaryKey"]
+    id = data["id"]
     row = Concession.objects.get(
-        primaryKey=primaryKey,
+        id=id,
     )
-    id = base64.b64encode(row.id.read()).decode("utf-8")
+    idCard = base64.b64encode(row.idCard.read()).decode("utf-8")
     aadharFront = base64.b64encode(row.aadharFront.read()).decode("utf-8")
     aadharBack = base64.b64encode(row.aadharBack.read()).decode("utf-8")
     application = {
-        "id": id,
+        "idCard": idCard,
         "age": row.age,
         "aadharFront": aadharFront,
         "aadharBack": aadharBack,
@@ -752,9 +757,9 @@ def userGetCompletedApplication(request):
 @api_view(["POST"])
 def userDownloadConcession(request):
     data = request.data
-    primaryKey = data["primaryKey"]
+    id = data["id"]
     concession = Concession.objects.get(
-        primaryKey=primaryKey,
+        id=id,
     )
     username = concession.username
     email = User.objects.get(

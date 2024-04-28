@@ -3,7 +3,9 @@ import 'package:hod/Splash/splash.dart';
 
 String api = "";
 void main() {
-  runApp(const Hod());
+  runApp(
+    const Hod(),
+  );
 }
 
 class Hod extends StatelessWidget {

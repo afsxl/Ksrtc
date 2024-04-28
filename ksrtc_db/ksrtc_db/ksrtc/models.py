@@ -31,8 +31,3 @@ class Concession(models.Model):
 class Places(models.Model):
     district = models.CharField(max_length=255, null=True)
     place = models.CharField(max_length=255, null=True)
-
-
-class Depots(models.Model):
-    district = models.CharField(max_length=255, null=True)
-    depot = models.CharField(max_length=255, null=True)

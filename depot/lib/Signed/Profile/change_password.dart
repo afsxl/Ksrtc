@@ -5,7 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:depot/main.dart';
 
 class ChangePassword extends StatefulWidget {
-  const ChangePassword({super.key});
+  const ChangePassword({
+    super.key,
+  });
 
   @override
   State<ChangePassword> createState() => _ChangePasswordState();
@@ -95,9 +97,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               }
                             },
                             child: Icon(
-                              hidePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hidePassword ? Icons.visibility : Icons.visibility_off,
                               color: Colors.black,
                             ),
                           ),
@@ -135,9 +135,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               }
                             },
                             child: Icon(
-                              hideNewPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hideNewPassword ? Icons.visibility : Icons.visibility_off,
                               color: Colors.black,
                             ),
                           ),
@@ -169,16 +167,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                               if (mounted) {
                                 setState(
                                   () {
-                                    hideConfirmNewPassword =
-                                        !hideConfirmNewPassword;
+                                    hideConfirmNewPassword = !hideConfirmNewPassword;
                                   },
                                 );
                               }
                             },
                             child: Icon(
-                              hideConfirmNewPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hideConfirmNewPassword ? Icons.visibility : Icons.visibility_off,
                               color: Colors.black,
                             ),
                           ),

@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:depot/main.dart';
 
@@ -75,8 +73,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text =
-          "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
       tCost.text = application['cost'];
       tDepot.text = application['depot'];
       tHomeDistrict.text = application['homeDistrict'];
@@ -135,7 +132,9 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              showImage(widget.photo);
+                              showImage(
+                                widget.photo,
+                              );
                             },
                             child: Container(
                               height: 150,
@@ -160,7 +159,11 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              showImage(base64Decode(application['id']));
+                              showImage(
+                                base64Decode(
+                                  application['id'],
+                                ),
+                              );
                             },
                             child: Container(
                               height: 150,
@@ -175,7 +178,9 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['idCard']),
+                                base64Decode(
+                                  application['idCard'],
+                                ),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -315,7 +320,10 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharFront']));
+                                  base64Decode(
+                                    application['aadharFront'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -329,8 +337,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -355,7 +362,10 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                             child: GestureDetector(
                               onTap: () {
                                 showImage(
-                                    base64Decode(application['aadharBack']));
+                                  base64Decode(
+                                    application['aadharBack'],
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 50,
@@ -369,8 +379,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(

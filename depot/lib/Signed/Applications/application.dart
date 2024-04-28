@@ -76,8 +76,7 @@ class _ApplicationState extends State<Application> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text =
-          "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
       tDepot.text = application['depot'];
       tHomeDistrict.text = application['homeDistrict'];
     } catch (e) {
@@ -332,8 +331,7 @@ class _ApplicationState extends State<Application> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -345,7 +343,7 @@ class _ApplicationState extends State<Application> {
                                     Icon(
                                       Icons.image,
                                       color: Colors.black,
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
@@ -357,8 +355,7 @@ class _ApplicationState extends State<Application> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(
-                                    base64Decode(application['aadharBack']));
+                                showImage(base64Decode(application['aadharBack']));
                               },
                               child: Container(
                                 height: 50,
@@ -372,8 +369,7 @@ class _ApplicationState extends State<Application> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -385,7 +381,7 @@ class _ApplicationState extends State<Application> {
                                     Icon(
                                       Icons.image,
                                       color: Colors.black,
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),

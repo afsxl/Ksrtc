@@ -5,7 +5,9 @@ import 'package:institution/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddCourse extends StatefulWidget {
-  const AddCourse({super.key});
+  const AddCourse({
+    super.key,
+  });
 
   @override
   State<AddCourse> createState() => _AddCourseState();
@@ -118,9 +120,7 @@ class _AddCourseState extends State<AddCourse> {
                               }
                             },
                             child: Icon(
-                              hidePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hidePassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),
@@ -157,9 +157,7 @@ class _AddCourseState extends State<AddCourse> {
                               }
                             },
                             child: Icon(
-                              hideConfirmPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hideConfirmPassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),

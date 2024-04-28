@@ -5,7 +5,9 @@ import 'package:institution/Signed/Courses/courses.dart';
 import 'package:institution/Signed/Profile/profile.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

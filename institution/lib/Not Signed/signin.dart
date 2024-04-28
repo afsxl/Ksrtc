@@ -6,7 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  const SignIn({
+    super.key,
+  });
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -277,9 +279,7 @@ class _SignInState extends State<SignIn> {
                               }
                             },
                             child: Icon(
-                              hidePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              hidePassword ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                         ),

@@ -5,7 +5,9 @@ import 'package:institution/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Courses extends StatefulWidget {
-  const Courses({super.key});
+  const Courses({
+    super.key,
+  });
 
   @override
   State<Courses> createState() => _CoursesState();
@@ -164,8 +166,7 @@ class _CoursesState extends State<Courses> {
                                         delete(index);
                                       },
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Icon(
                                             Icons.delete,

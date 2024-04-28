@@ -7,7 +7,9 @@ import 'package:hod/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  const Profile({
+    super.key,
+  });
 
   @override
   State<Profile> createState() => _ProfileState();

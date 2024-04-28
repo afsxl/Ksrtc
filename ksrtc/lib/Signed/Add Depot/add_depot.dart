@@ -1,28 +1,45 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:institution/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ksrtc/main.dart';
 
-class AddCourse extends StatefulWidget {
-  const AddCourse({super.key});
+class AddDepot extends StatefulWidget {
+  const AddDepot({super.key});
 
   @override
-  State<AddCourse> createState() => _AddCourseState();
+  State<AddDepot> createState() => _AddDepotState();
 }
 
-class _AddCourseState extends State<AddCourse> {
-  TextEditingController tCourse = TextEditingController();
+class _AddDepotState extends State<AddDepot> {
+  TextEditingController tDepot = TextEditingController();
   TextEditingController tPassword = TextEditingController();
   TextEditingController tConfirmPassword = TextEditingController();
+  List<String> districts = [
+    "District",
+    "THIRUVANANTHAPURAM",
+    "KOLLAM",
+    "PATHANAMTHITTA",
+    "ALAPPUZHA",
+    "KOTTAYAM",
+    "IDUKKI",
+    "ERNAKULAM",
+    "THRISSUR",
+    "PALAKKAD",
+    "MALAPPURAM",
+    "KOZHIKODE",
+    "WAYANAD",
+    "KANNUR",
+    "KASARAGOD",
+  ];
+  String district = '';
+  bool loading = false;
   bool hidePassword = true;
   bool hideConfirmPassword = true;
-  bool loading = false;
 
   @override
   void initState() {
     super.initState();
-    tCourse.text = '';
+    district = districts[0];
     tPassword.text = '';
     tConfirmPassword.text = '';
     loading = false;
@@ -55,9 +72,10 @@ class _AddCourseState extends State<AddCourse> {
                 )
               : SingleChildScrollView(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Add Course / Class',
+                        "Add Depot",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
@@ -67,21 +85,70 @@ class _AddCourseState extends State<AddCourse> {
                       const SizedBox(
                         height: 30,
                       ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        child: DropdownButton<String>(
+                          value: district,
+                          isExpanded: true,
+                          underline: const SizedBox(),
+                          iconEnabledColor: Colors.black,
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                          dropdownColor: Colors.grey.shade300,
+                          items: districts.map(
+                            (String value) {
+                              return DropdownMenuItem(
+                                value: value,
+                                child: Text(
+                                  value,
+                                ),
+                              );
+                            },
+                          ).toList(),
+                          onChanged: (String? value) async {
+                            if (value != districts[0]) {
+                              if (mounted) {
+                                setState(
+                                  () {
+                                    district = value!;
+                                  },
+                                );
+                              }
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       TextFormField(
-                        controller: tCourse,
+                        controller: tDepot,
+                        keyboardType: TextInputType.name,
                         decoration: InputDecoration(
-                          isDense: true,
                           filled: true,
                           fillColor: Colors.black12,
-                          label: const Text(
-                            'Course Name',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
+                          isDense: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                               10,
+                            ),
+                          ),
+                          label: const Text(
+                            'Depot Name',
+                            style: TextStyle(
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -179,9 +246,9 @@ class _AddCourseState extends State<AddCourse> {
                           ),
                         ),
                         child: TextButton(
-                          onPressed: addCourse,
+                          onPressed: addInstitution,
                           child: const Text(
-                            'Add',
+                            "Add Depot",
                             style: TextStyle(
                               color: Colors.black,
                             ),
@@ -196,7 +263,7 @@ class _AddCourseState extends State<AddCourse> {
     );
   }
 
-  void addCourse() async {
+  void addInstitution() async {
     if (mounted) {
       setState(
         () {
@@ -204,36 +271,36 @@ class _AddCourseState extends State<AddCourse> {
         },
       );
     }
-    if (tCourse.text == '') {
-      showError('Enter Course Name !');
+    if (district == districts[0]) {
+      showError("Select A District !");
+    } else if (tDepot.text == '') {
+      showError("Enter Depot Name !");
     } else if (tPassword.text == '') {
-      showError('Enter Password !');
+      showError("Enter Password !");
     } else if (tPassword.text.length < 8) {
       showError('Password Length Less Than 8 !');
     } else if (tConfirmPassword.text != tPassword.text) {
       showError("Password Doesn't Match !");
     } else {
       try {
-        SharedPreferences pref = await SharedPreferences.getInstance();
-        String? id = pref.getString('id');
         final response = await http.post(
           Uri.parse(
-            '${api}institutionAddCourse',
+            '${api}ksrtcAddDepot',
           ),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
           body: jsonEncode(
             {
-              'id': id,
-              'course': tCourse.text,
+              'district': district,
+              'depot': tDepot.text,
               'password': tPassword.text,
             },
           ),
         );
         Map data = json.decode(response.body);
         if (data['status']) {
-          showSuccess("Course Added !");
+          showSuccess("Depot Added");
           if (mounted) {
             setState(
               () {
@@ -242,7 +309,7 @@ class _AddCourseState extends State<AddCourse> {
             );
           }
         } else {
-          showError("Course Already Exists !");
+          showError("Depot Already Exists !");
         }
       } catch (e) {
         showError("Can't Connect To NetWork !");
@@ -258,48 +325,44 @@ class _AddCourseState extends State<AddCourse> {
   }
 
   void showError(String error) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(
-            seconds: 1,
-          ),
-          backgroundColor: Colors.red.shade900,
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(
-            20,
-          ),
-          content: Text(
-            error,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(
+          seconds: 1,
+        ),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(
+          20,
+        ),
+        backgroundColor: Colors.red.shade900,
+        content: Text(
+          error,
+          style: const TextStyle(
+            color: Colors.white,
           ),
         ),
-      );
-    }
+      ),
+    );
   }
 
   void showSuccess(String msg) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(
-            seconds: 1,
-          ),
-          backgroundColor: Colors.black,
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(
-            20,
-          ),
-          content: Text(
-            msg,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(
+          seconds: 1,
+        ),
+        backgroundColor: Colors.black,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(
+          20,
+        ),
+        content: Text(
+          msg,
+          style: const TextStyle(
+            color: Colors.white,
           ),
         ),
-      );
-    }
+      ),
+    );
   }
 }

@@ -3,7 +3,9 @@ import 'package:ksrtc/Splash/splash.dart';
 
 String api = "";
 void main() {
-  runApp(const Ksrtc());
+  runApp(
+    const Ksrtc(),
+  );
 }
 
 class Ksrtc extends StatelessWidget {

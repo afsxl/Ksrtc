@@ -127,7 +127,8 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
                               shrinkWrap: true,
                               itemCount: applications.length,
                               itemBuilder: (context, index) {
-                                Uint8List photo = base64Decode(applications[index]['photo']);
+                                Uint8List photo =
+                                    base64Decode(applications[index]['photo']);
                                 return Container(
                                   decoration: BoxDecoration(
                                     color: Colors.black26,
@@ -145,10 +146,11 @@ class _CompletedApplicationsState extends State<CompletedApplications> {
                                         MaterialPageRoute(
                                           builder: (ctx) {
                                             return CompletedApplication(
-                                              aadhar: applications[index]['aadhar'],
+                                              aadhar: applications[index]
+                                                  ['aadhar'],
                                               photo: photo,
                                               name: applications[index]['name'],
-                                              primaryKey: applications[index]['primaryKey'],
+                                              id: applications[index]['id'],
                                             );
                                           },
                                         ),

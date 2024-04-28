@@ -8,13 +8,13 @@ class CompletedApplication extends StatefulWidget {
   final String aadhar;
   final Uint8List photo;
   final String name;
-  final int primaryKey;
+  final int id;
   const CompletedApplication({
     super.key,
     required this.aadhar,
     required this.photo,
     required this.name,
-    required this.primaryKey,
+    required this.id,
   });
 
   @override
@@ -31,6 +31,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
   TextEditingController tCourse = TextEditingController();
   TextEditingController tInstitution = TextEditingController();
   TextEditingController tCost = TextEditingController();
+  TextEditingController tDepot = TextEditingController();
+  TextEditingController tHomeDistrict = TextEditingController();
   Map application = {};
   bool loading = false;
 
@@ -58,7 +60,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
         },
         body: jsonEncode(
           {
-            'primaryKey': widget.primaryKey,
+            'id': widget.id,
           },
         ),
       );
@@ -71,8 +73,11 @@ class _CompletedApplicationState extends State<CompletedApplication> {
       tEndPoint.text = application['endPoint'];
       tRate.text = application['rate'];
       tCourse.text = application['course'];
-      tInstitution.text = "${application['institution']},\n${application['place']},${application['district']}";
+      tInstitution.text =
+          "${application['institution']},\n${application['place']},${application['district']}";
       tCost.text = application['cost'];
+      tDepot.text = application['depot'];
+      tHomeDistrict.text = application['homeDistrict'];
     } catch (e) {
       showError("Can't Connect To Network !");
       if (mounted) {
@@ -168,7 +173,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                 5,
                               ),
                               child: Image.memory(
-                                base64Decode(application['id']),
+                                base64Decode(application['idCard']),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -307,7 +312,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(base64Decode(application['aadharFront']));
+                                showImage(
+                                    base64Decode(application['aadharFront']));
                               },
                               child: Container(
                                 height: 50,
@@ -321,7 +327,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -345,7 +352,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                showImage(base64Decode(application['aadharBack']));
+                                showImage(
+                                    base64Decode(application['aadharBack']));
                               },
                               child: Container(
                                 height: 50,
@@ -359,7 +367,8 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                                   ),
                                 ),
                                 child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
@@ -592,6 +601,94 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                             ),
                             style: const TextStyle(
                               color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Home District',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: tHomeDistrict,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Depot',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: tDepot,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

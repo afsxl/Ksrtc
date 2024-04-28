@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ksrtc/Signed/Add%20Depot/add_depot.dart';
 import 'package:ksrtc/Signed/Add%20Institution/add_institution.dart';
-import 'package:ksrtc/Signed/Applications/applications.dart';
 import 'package:ksrtc/Signed/Completed/completed_applications.dart';
+import 'package:ksrtc/Signed/Depots/depots.dart';
 import 'package:ksrtc/Signed/Institutions/institutions.dart';
 
 class Home extends StatelessWidget {
@@ -35,7 +36,7 @@ class Home extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (ctx) {
-                              return const Applications();
+                              return const Depots();
                             },
                           ),
                         );
@@ -54,7 +55,7 @@ class Home extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Applications',
+                              'Depots',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -74,6 +75,55 @@ class Home extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) {
+                              return const AddDepot();
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black45,
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(
+                          20,
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Add Depot',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Icon(
+                              Icons.add_box,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -115,14 +165,10 @@ class Home extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -165,9 +211,13 @@ class Home extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -208,6 +258,15 @@ class Home extends StatelessWidget {
                           ],
                         ),
                       ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: const SizedBox(),
                     ),
                   )
                 ],

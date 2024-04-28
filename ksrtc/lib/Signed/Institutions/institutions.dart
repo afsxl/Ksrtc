@@ -139,9 +139,12 @@ class _InstitutionsState extends State<Institutions> {
                                           builder: (ctx) {
                                             return Institution(
                                               id: institutions[index]['id'],
-                                              institution: institutions[index]['institution'],
-                                              district: institutions[index]['district'],
-                                              place: institutions[index]['place'],
+                                              institution: institutions[index]
+                                                  ['institution'],
+                                              district: institutions[index]
+                                                  ['district'],
+                                              place: institutions[index]
+                                                  ['place'],
                                             );
                                           },
                                         ),

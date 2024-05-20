@@ -174,7 +174,6 @@ class _ProfileState extends State<Profile> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 100,
                             decoration: BoxDecoration(
                               color: Colors.black12,
                               border: Border.all(
@@ -195,7 +194,6 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                           Container(
-                            width: 100,
                             decoration: BoxDecoration(
                               color: Colors.black12,
                               border: Border.all(
@@ -249,7 +247,6 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                           Container(
-                            width: 100,
                             decoration: BoxDecoration(
                               color: Colors.black12,
                               border: Border.all(

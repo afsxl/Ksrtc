@@ -58,8 +58,8 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 75,
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 5,
         ),
         child: Center(
           child: loading
@@ -229,7 +229,6 @@ class _SignUpState extends State<SignUp> {
                       Visibility(
                         visible: hideOtp,
                         child: Container(
-                          width: 100,
                           decoration: BoxDecoration(
                             color: Colors.black12,
                             border: Border.all(
@@ -283,7 +282,6 @@ class _SignUpState extends State<SignUp> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  width: 100,
                                   decoration: BoxDecoration(
                                     color: Colors.black12,
                                     border: Border.all(
@@ -304,7 +302,6 @@ class _SignUpState extends State<SignUp> {
                                   ),
                                 ),
                                 Container(
-                                  width: 100,
                                   decoration: BoxDecoration(
                                     color: Colors.black12,
                                     border: Border.all(

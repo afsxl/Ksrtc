@@ -45,8 +45,8 @@ class _SignInState extends State<SignIn> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 75,
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 5,
         ),
         child: Center(
           child: loading
@@ -130,7 +130,6 @@ class _SignInState extends State<SignIn> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 100,
                             decoration: BoxDecoration(
                               color: Colors.black12,
                               borderRadius: BorderRadius.circular(
@@ -151,7 +150,6 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                           Container(
-                            width: 100,
                             decoration: BoxDecoration(
                               color: Colors.black12,
                               borderRadius: BorderRadius.circular(

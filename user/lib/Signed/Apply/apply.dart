@@ -101,10 +101,10 @@ class _ApplyConcessionState extends State<ApplyConcession> {
     tStartPoint.text = '';
     tEndPoint.text = '';
     tRate.text = '';
-    photoName = "Select Your Photo";
-    aadharFrontName = "Select Aadhar Front Side";
-    aadharBackName = "Select Aadhar Back Side";
-    idName = "Select Your Institution Id";
+    photoName = "Your Photo";
+    aadharFrontName = "Aadhar Front Side";
+    aadharBackName = "Aadhar Back Side";
+    idName = "Your Institution Id";
   }
 
   @override
@@ -124,7 +124,7 @@ class _ApplyConcessionState extends State<ApplyConcession> {
       body: Container(
         padding: const EdgeInsets.symmetric(
           vertical: 15,
-          horizontal: 20,
+          horizontal: 10,
         ),
         child: loading
             ? const Center(
@@ -857,7 +857,6 @@ class _ApplyConcessionState extends State<ApplyConcession> {
                       height: 20,
                     ),
                     Container(
-                      width: 100,
                       decoration: BoxDecoration(
                         color: Colors.black12,
                         border: Border.all(

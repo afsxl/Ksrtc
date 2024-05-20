@@ -176,7 +176,6 @@ class _ProfileState extends State<Profile> {
                       height: 30,
                     ),
                     Container(
-                      width: 100,
                       decoration: BoxDecoration(
                         color: Colors.black12,
                         border: Border.all(

@@ -49,8 +49,8 @@ class Home extends StatelessWidget {
                             5,
                           ),
                         ),
-                        padding: const EdgeInsets.all(
-                          20,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
                         ),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -94,8 +94,8 @@ class Home extends StatelessWidget {
                             5,
                           ),
                         ),
-                        padding: const EdgeInsets.all(
-                          20,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
                         ),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -143,8 +143,8 @@ class Home extends StatelessWidget {
                             5,
                           ),
                         ),
-                        padding: const EdgeInsets.all(
-                          20,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
                         ),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -188,8 +188,8 @@ class Home extends StatelessWidget {
                             5,
                           ),
                         ),
-                        padding: const EdgeInsets.all(
-                          20,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
                         ),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,

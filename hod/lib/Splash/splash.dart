@@ -35,6 +35,9 @@ class _SplashState extends State<Splash> {
       (response) {
         if (response.statusCode == 200) {
           api = response.body;
+          if (!api.endsWith('/')) {
+            api = api.substring(0, api.length - 1);
+          }
         } else {
           showError("Can't Connect To NetWork !");
         }

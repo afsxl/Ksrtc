@@ -49,7 +49,9 @@ class _ChangePasswordState extends State<ChangePassword> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 75),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 6,
+        ),
         child: Center(
           child: loading
               ? const CircularProgressIndicator(
@@ -183,7 +185,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                         height: 20,
                       ),
                       Container(
-                        width: 100,
                         decoration: BoxDecoration(
                           color: Colors.black12,
                           border: Border.all(

@@ -159,7 +159,7 @@ class _CompletedApplicationState extends State<CompletedApplication> {
                             onTap: () {
                               showImage(
                                 base64Decode(
-                                  application['id'],
+                                  application['idCard'],
                                 ),
                               );
                             },

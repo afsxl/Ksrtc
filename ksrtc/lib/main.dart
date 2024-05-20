@@ -9,7 +9,9 @@ void main() {
 }
 
 class Ksrtc extends StatelessWidget {
-  const Ksrtc({super.key});
+  const Ksrtc({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

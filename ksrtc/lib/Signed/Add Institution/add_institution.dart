@@ -60,8 +60,8 @@ class _AddInstitutionState extends State<AddInstitution> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 75,
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 6,
         ),
         child: Center(
           child: loading
@@ -208,7 +208,6 @@ class _AddInstitutionState extends State<AddInstitution> {
                         height: 20,
                       ),
                       Container(
-                        width: 100,
                         decoration: BoxDecoration(
                           color: Colors.black12,
                           border: Border.all(

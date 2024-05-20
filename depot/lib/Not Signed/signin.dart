@@ -65,8 +65,8 @@ class _SignInState extends State<SignIn> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 60,
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 6,
         ),
         child: Center(
           child: loading
@@ -226,7 +226,6 @@ class _SignInState extends State<SignIn> {
                         height: 20,
                       ),
                       Container(
-                        width: 100,
                         decoration: BoxDecoration(
                           color: Colors.black12,
                           border: Border.all(

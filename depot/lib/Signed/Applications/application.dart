@@ -159,7 +159,7 @@ class _ApplicationState extends State<Application> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              showImage(base64Decode(application['id']));
+                              showImage(base64Decode(application['idCard']));
                             },
                             child: Container(
                               height: 150,

@@ -65,7 +65,7 @@ class _ApplicationsState extends State<Applications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black54,

@@ -67,7 +67,7 @@ class _InstitutionsState extends State<Institutions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black54,
@@ -95,7 +95,7 @@ class _InstitutionsState extends State<Institutions> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
-                      'Applications',
+                      'Institutions',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 25,

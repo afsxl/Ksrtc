@@ -66,7 +66,7 @@ class _DepotsState extends State<Depots> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black54,
@@ -94,7 +94,7 @@ class _DepotsState extends State<Depots> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
-                      'Applications',
+                      'Depots',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 25,

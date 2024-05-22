@@ -71,7 +71,7 @@ class _CoursesState extends State<Courses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black54,

@@ -21,32 +21,6 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    getApi();
-  }
-
-  void getApi() async {
-    String url = 'https://raw.githubusercontent.com/afsxl/Api/main/Api.txt';
-    await http.get(
-      Uri.parse(url),
-      headers: {
-        'Accept': 'application/vnd.github.v3.raw',
-      },
-    ).then(
-      (response) {
-        if (response.statusCode == 200) {
-          api = response.body;
-          if (!api.endsWith('/')) {
-            api = api.substring(0, api.length - 1);
-          }
-        } else {
-          showError("Can't Connect To NetWork !");
-        }
-      },
-    ).catchError(
-      (e) {
-        showError("Can't Connect To NetWork !");
-      },
-    );
     checkLogin();
   }
 

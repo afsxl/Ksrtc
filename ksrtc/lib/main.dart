@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ksrtc/Splash/splash.dart';
+import 'package:ksrtc/Signed/home.dart';
 
-String api = "";
+String api = "https://80401wwv-8000.inc1.devtunnels.ms/";
 void main() {
   runApp(
     const Ksrtc(),
@@ -16,7 +16,7 @@ class Ksrtc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Splash(),
+      home: Home(),
     );
   }
 }

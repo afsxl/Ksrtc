@@ -1,7 +1,7 @@
 import 'package:depot/Splash/splash.dart';
 import 'package:flutter/material.dart';
 
-String api = '';
+String api = 'https://80401wwv-8000.inc1.devtunnels.ms/';
 
 void main() {
   runApp(

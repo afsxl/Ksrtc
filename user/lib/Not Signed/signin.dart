@@ -118,7 +118,9 @@ class _SignInState extends State<SignIn> {
                               }
                             },
                             child: Icon(
-                              hidePassword ? Icons.visibility : Icons.visibility_off,
+                              hidePassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                             ),
                           ),
                         ),
@@ -253,6 +255,7 @@ class _SignInState extends State<SignIn> {
           showError('Incorrect Username Or Password !');
         }
       } catch (e) {
+        print(e);
         showError("Can't Connect To NetWork !");
       }
     }

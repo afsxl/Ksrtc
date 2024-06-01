@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user/Splash/splash.dart';
 
-String api = "";
+String api = "https://80401wwv-8000.inc1.devtunnels.ms/";
 void main() {
   runApp(
     const User(),
@@ -9,7 +9,9 @@ void main() {
 }
 
 class User extends StatelessWidget {
-  const User({super.key});
+  const User({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

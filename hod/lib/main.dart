@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod/Splash/splash.dart';
 
-String api = "";
+String api = "https://80401wwv-8000.inc1.devtunnels.ms/";
 void main() {
   runApp(
     const Hod(),
